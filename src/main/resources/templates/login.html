@@ -1,10 +1,15 @@
-
 <!DOCTYPE html>
 <html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>行业数据能力平台</title>
-    <link rel="stylesheet" type="text/css" href="css/style2.0.css">
+
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <link href="../static/css/style.css" th:href="@{/css/style2.0.css}" rel="stylesheet"/>
+    <link href="../static/css/login.min.css" th:href="@{/css/login.min.css}" rel="stylesheet"/>
+
     <style type="text/css">
         ul li{font-size: 30px;color:#2ec0f6;}
         .tyg-div{z-index:-1000;float:left;position:absolute;left:5%;top:20%;}
@@ -63,6 +68,7 @@
         }
     </style>
 <body>
+
 <div class="tyg-div">
     <ul>
         <li>让</li>
@@ -90,41 +96,44 @@
 </div>
 <div class="tyg-div-denglv">
     <div class="tyg-div-form">
-        <form action="">
-            <h2>登录</h2><p class="tyg-p">欢迎访问  数据运行平台</p>
+        <form action="" id="signupForm">
+            <p class="tyg-p"></p>
             <div style="margin:5px 0px;">
-                <input type="text" placeholder="请输入账号..."/>
+                <input type="text" id="username" name="username" placeholder="请输入账号..."/>
             </div>
             <div style="margin:5px 0px;">
-                <input type="text" placeholder="请输入密码..."/>
+                <input type="password" style="height:30px;width:270px;margin-top: 23px" name="password" placeholder="请输入密码..."/>
             </div>
             <div style="margin:5px 0px;">
-                <input type="text" style="width:150px;" placeholder="请输入验证码..."/>
+                <input type="text" style="width:150px;" name="validateCode"  placeholder="请输入验证码..."/>
+
                 <a href="javascript:void(0);" title="点击更换验证码">
-                    <img th:src="@{captcha/captchaImage(type=math)}" class="imgcode" width="85%"/>
+                    <img th:src="@{captcha/captchaImage}" class="imgcode" style="width:29%;vertical-align:bottom;" alt="验证码"/>
+
                 </a>
 
+
             </div>
-            <button type="submit" >登<span style="width:20px;"></span>录</button>
+
+            <button id="btnSubmit" type="button" >登<span style="width:20px;"></span>录</button>
+
         </form>
     </div>
 </div>
 
-<script src="../static/ajax/libs/validate/jquery.validate.min.js" th:src="@{/ajax/libs/validate/jquery.validate.min.js}"></script>
-<script src="../static/ajax/libs/validate/messages_zh.min.js" th:src="@{/ajax/libs/validate/messages_zh.min.js}"></script>
-<script src="../static/ajax/libs/layer/layer.min.js" th:src="@{/ajax/libs/layer/layer.min.js}"></script>
-<script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
-<script src="../static/ruoyi/js/ry-ui.js" th:src="@{/ruoyi/js/ry-ui.js?v=4.2.0}"></script>
-<script src="../static/ruoyi/login.js" th:src="@{/ruoyi/login.js}"></script>
 
-<script src="../static/libs/validate/jquery-ui-1.10.4.min.js" th:src="@{/ajax/libs/validate/jquery.validate.min.js}"></script>
-<script type="text/javascript" src="./js/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="./js/com.js"></script>
+
+<script src="../static/js/jquery-1.8.0.min.js" th:src="@{/js/jquery-1.8.0.min.js}" ></script>
+<script src="../static/js/jquery.validate.min.js" th:src="@{/js/jquery.validate.min.js}"></script>
+<script src="../static/js/com.js" th:src="@{/js/com.js}"></script>
+<script src="../static/js/ry-ui.js" th:src="@{/js/ry-ui.js}"></script>
+<script src="../static/libs/validate/jquery.validate.min.js" th:src="@{/libs/validate/jquery.validate.min.js}"></script>
+<script src="../static/libs/validate/messages_zh.min.js" th:src="@{/libs/validate/messages_zh.min.js}"></script>
+<script src="../static/libs/layer/layer.min.js" th:src="@{/libs/layer/layer.min.js}"></script>
+<script src="../static/libs/blockUI/jquery.blockUI.js" th:src="@{/libs/blockUI/jquery.blockUI.js}"></script>
+
 <!--[if IE 6]>
-<script language="javascript" type="text/javascript" src="./script/ie6_png.js"></script>
-<script language="javascript" type="text/javascript">
-    DD_belatedPNG.fix(".png");
-</script>
+
 <![endif]-->
 <div style="text-align:center;">
 

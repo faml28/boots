@@ -1,0 +1,48 @@
+package com.fml.config.exception;
+
+import com.fml.config.util.MessageUtils;
+import com.fml.config.util.StringUtils;
+import lombok.Data;
+
+
+/**
+ * Created by fanml
+ * Created by 2020/6/3
+ */
+@Data
+public class BaseException extends RuntimeException{
+
+    private static final long serialVersionUID = 1L;
+    // 所属模块
+    private String module;
+    //错误码
+    private String code;
+    //错误码对应的参数
+    private Object[] args;
+    //错误消息
+    private String defaultMessage;
+
+    @Override
+    public String getMessage() {
+        String message = null;
+        if(!StringUtils.isEmpty(code)){
+            message = MessageUtils.message(code, args);
+        }
+        if(message == null){
+            message = defaultMessage;
+        }
+        return message;
+    }
+
+
+    public BaseException(String module, String code, Object[] args, String defaultMessage) {
+        this.module = module;
+        this.code = code;
+        this.args = args;
+        this.defaultMessage = defaultMessage;
+    }
+    public BaseException(){
+
+    }
+
+}

@@ -2,13 +2,13 @@ spring:
   datasource:
       druid:
         master:
-          url: jdbc:mysql://39.107.31.55:3306/ry-vue?characterEncoding=utf-8
+          url: jdbc:mysql://39.107.31.55:3306/bat_db?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
           username: root
           password: Adming@123
           driver-class-name: com.mysql.cj.jdbc.Driver
         slave:
           # 从数据源开关/默认关闭
-          enabled: true
+          enabled: false
           url: jdbc:mysql://39.107.31.55:3306/rTy-vue?characterEncoding=utf-8
           username: root
           password: Adming@123
@@ -51,11 +51,24 @@ spring:
           wall:
             config:
               multi-statement-allow: true
-
+  messages:
+    basename: static/i18n/messages
+shiro:
+  user:
+    # 登录地址
+    loginUrl: /login
+    # 权限认证失败地址
+    unauthorizedUrl: /unauth
+    # 验证码开关
+    captchaEnabled: true
+    # 验证码类型 math 数字计算 char 字符
+    captchaType: math
 
 
 mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
+
+
 
 
 

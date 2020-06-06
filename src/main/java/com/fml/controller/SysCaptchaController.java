@@ -1,8 +1,10 @@
 package com.fml.controller;
 
+import com.fml.config.filter.CaptchaValidateFilter;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +34,9 @@ public class SysCaptchaController
     @Resource(name = "captchaProducerMath")
     private Producer captchaProducerMath;
 
+    @Resource(name = "captchaValidateFilter")
+    private CaptchaValidateFilter captchaValidateFilter;
+
     /**
      * 验证码生成
      */
@@ -48,7 +53,8 @@ public class SysCaptchaController
             response.setHeader("Pragma", "no-cache");
             response.setContentType("image/jpeg");
 
-            String type = request.getParameter("type");
+            //String type = request.getParameter("type");
+            String type=captchaValidateFilter.getCaptchaType();
             String capStr = null;
             String code = null;
             BufferedImage bi = null;

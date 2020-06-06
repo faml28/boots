@@ -1,3 +1,7 @@
+/**
+ * 通用js方法封装处理
+ * Copyright (c) 2019 ruoyi
+ */
 
 // 当前table相关信息
 var table = {
@@ -638,8 +642,10 @@ var table = {
         },
         // 弹出层封装处理
     	modal: {
+
     		// 显示图标
     		icon: function(type) {
+
             	var icon = "";
         	    if (type == modal_status.WARNING) {
         	        icon = 0;
@@ -657,7 +663,7 @@ var table = {
             	if (type != undefined) {
                     layer.msg(content, { icon: $.modal.icon(type), time: 1000, shift: 5 });
                 } else {
-                    layer.msg(content,{ icon:1, time: 1000, shift: 5 });
+                    layer.msg(content);
                 }
             },
             // 错误消息
