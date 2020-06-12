@@ -20,20 +20,24 @@
             top: 135px;
             left: 60px;
         }
+        .contPar{
+        z-index:1000;float:left;position:absolute;right:60%;top:5%;
+        }
         .tyg-div-denglv{
-            z-index:1000;float:right;position:absolute;right:3%;top:10%;
+            z-index:1000;float:right;position:absolute;right:50%;top:20%;
         }
         .tyg-div-form{
-            background-color: #23305a;
+
             width:300px;
             height:auto;
             margin:120px auto 0 auto;
             color:#2ec0f6;
+            border: #3e2c42;
         }
         .tyg-div-form form {padding:10px;}
         .tyg-div-form form input[type="text"]{
-            width: 270px;
-            height: 30px;
+            width: 300px;
+            height: 35px;
             margin: 25px 10px 0px 0px;
         }
         .tyg-div-form form button {
@@ -80,10 +84,10 @@
         <li><div style="margin-left:120px;">活</div></li>
     </ul>
 </div>
-<div id="contPar" class="contPar">
+<div id="contPar" class="contPar" style="right: 10%">
     <div id="page1"  style="z-index:1;">
-        <div class="title0">行业数据能力平台</div>
-        <div class="title1">旅游、交通、气象、公共安全、大数据</div>
+
+
         <div class="imgGroug">
             <ul>
                 <img alt="" class="img0 png" src="./img/page1_0.png">
@@ -91,7 +95,7 @@
                 <img alt="" class="img2 png" src="./img/page1_2.png">
             </ul>
         </div>
-        <img alt="" class="img3 png" src="./img/page1_3.jpg">
+
     </div>
 </div>
 <div class="tyg-div-denglv">
@@ -102,13 +106,13 @@
                 <input type="text" id="username" name="username" placeholder="请输入账号..."/>
             </div>
             <div style="margin:5px 0px;">
-                <input type="password" style="height:30px;width:270px;margin-top: 23px" name="password" placeholder="请输入密码..."/>
+                <input type="password" style="height:35px;width:300px;margin-top: 23px" name="password" placeholder="请输入密码..."/>
             </div>
             <div style="margin:5px 0px;">
-                <input type="text" style="width:150px;" name="validateCode"  placeholder="请输入验证码..."/>
+                <input type="text" style="width:160px;height:40px" name="validateCode"  placeholder="请输入验证码..."/>
 
                 <a href="javascript:void(0);" title="点击更换验证码">
-                    <img th:src="@{captcha/captchaImage}" class="imgcode" style="width:29%;vertical-align:bottom;" alt="验证码"/>
+                    <img th:src="@{captcha/captchaImage}" class="imgcode" style="width:35%;height:40px;vertical-align:bottom;" alt="验证码"/>
 
                 </a>
 

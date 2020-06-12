@@ -55,11 +55,11 @@ public class CaptchaConfig
         // 边框颜色 默认为Color.BLACK
         properties.setProperty(KAPTCHA_BORDER_COLOR, "105,179,90");
         // 验证码文本字符颜色 默认为Color.BLACK
-        properties.setProperty(KAPTCHA_TEXTPRODUCER_FONT_COLOR, "blue");
+        properties.setProperty(KAPTCHA_TEXTPRODUCER_FONT_COLOR, "red");
         // 验证码图片宽度 默认为200
         properties.setProperty(KAPTCHA_IMAGE_WIDTH, "160");
         // 验证码图片高度 默认为50
-        properties.setProperty(KAPTCHA_IMAGE_HEIGHT, "60");
+        properties.setProperty(KAPTCHA_IMAGE_HEIGHT, "65");
         // 验证码文本字符大小 默认为40
         properties.setProperty(KAPTCHA_TEXTPRODUCER_FONT_SIZE, "35");
         // KAPTCHA_SESSION_KEY

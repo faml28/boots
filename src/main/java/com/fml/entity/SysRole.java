@@ -3,6 +3,10 @@ package com.fml.entity;
 
 import com.fml.config.common.BaseEntity;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Arrays;
 
 /**
  * 角色表 sys_role
@@ -10,6 +14,8 @@ import lombok.Data;
  * @author ruoyi
  */
 @Data
+@Getter
+@Setter
 public class SysRole extends BaseEntity
 {
     private Long roleId;
@@ -30,6 +36,20 @@ public class SysRole extends BaseEntity
     private boolean flag = false;
 
     private Long[] menuIds;
+    @Override
+    public String toString() {
+        return "SysRole{" +
+                "roleId=" + roleId +
+                ", roleName='" + roleName + '\'' +
+                ", roleKey='" + roleKey + '\'' +
+                ", roleSort='" + roleSort + '\'' +
+                ", dataScope='" + dataScope + '\'' +
+                ", status='" + status + '\'' +
+                ", delFlag='" + delFlag + '\'' +
+                ", flag=" + flag +
+                ", menuIds=" + Arrays.toString(menuIds) +
+                '}';
+    }
 
 
 }

@@ -68,6 +68,12 @@ shiro:
 mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
 
+  # 日志配置
+  logging:
+    level:
+      com.fml: debug
+      org.springframework: warn
+
 
 
 

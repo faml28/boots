@@ -1,5 +1,6 @@
 
 // 当前table相关信息
+
 var table = {
     config: {},
     // 当前实例配置
@@ -324,6 +325,7 @@ var table = {
 			},
             // 搜索-默认第一个form
             search: function(formId, tableId, data) {
+
             	table.set(tableId);
             	var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
             	var params = $.common.isEmpty(tableId) ? $("#" + table.options.id).bootstrapTable('getOptions') : $("#" + tableId).bootstrapTable('getOptions');
@@ -983,11 +985,13 @@ var table = {
             // 添加信息
             add: function(id) {
             	table.set();
+
             	$.modal.open("添加" + table.options.modalName, $.operate.addUrl(id));
             },
             // 添加信息，以tab页展现
             addTab: function (id) {
             	table.set();
+
                 $.modal.openTab("添加" + table.options.modalName, $.operate.addUrl(id));
             },
             // 添加信息 全屏

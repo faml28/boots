@@ -1,8 +1,14 @@
 package com.fml.controller;
 
 import com.fml.config.ajaxResult.AjaxResult;
+import com.fml.config.page.PageDomain;
+import com.fml.config.page.TableDataInfo;
+import com.fml.config.page.TableSupport;
 import com.fml.config.util.ServletUtils;
+import com.fml.config.util.SqlUtil;
 import com.fml.config.util.StringUtils;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -10,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.util.List;
 
 
 /**
@@ -84,5 +90,30 @@ public class BaseController {
     {
         return StringUtils.format("redirect:{}", url);
     }
+
+    protected TableDataInfo getDataTable(List<?> list)
+    {
+        TableDataInfo rspData = new TableDataInfo();
+        rspData.setCode(0);
+        rspData.setRows(list);
+        rspData.setTotal(new PageInfo(list).getTotal());
+        return rspData;
+    }
+
+    /**
+     * 设置请求分页数据
+     */
+    protected void startPage()
+    {
+        PageDomain pageDomain = TableSupport.buildPageRequest();
+        Integer pageNum = pageDomain.getPageNum();
+        Integer pageSize = pageDomain.getPageSize();
+        if (StringUtils.isNotNull(pageNum) && StringUtils.isNotNull(pageSize))
+        {
+            String orderBy = SqlUtil.escapeOrderBySql(pageDomain.getOrderBy());
+            PageHelper.startPage(pageNum, pageSize, orderBy);
+        }
+    }
+
 
 }

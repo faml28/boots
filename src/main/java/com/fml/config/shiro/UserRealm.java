@@ -4,6 +4,7 @@ package com.fml.config.shiro;
 import com.fml.config.exception.user.*;
 import com.fml.entity.SysUser;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 
@@ -73,5 +74,12 @@ public class UserRealm extends AuthorizingRealm
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, passwrod, getName());
         return info;
 
+    }
+    /**
+     * 清理缓存权限
+     */
+    public void clearCachedAuthorizationInfo()
+    {
+        this.clearCachedAuthorizationInfo(SecurityUtils.getSubject().getPrincipals());
     }
 }

@@ -28,6 +28,7 @@ var table = {
 };
 
 (function ($) {
+
     $.extend({
     	_tree: {},
     	bttTable: {},
@@ -35,6 +36,7 @@ var table = {
     	table: {
             // 初始化表格参数
             init: function(options) {
+         sss
             	var defaults = {
             		id: "bootstrap-table",
             		type: 0, // 0 代表bootstrapTable 1代表bootstrapTreeTable
