@@ -24,7 +24,7 @@ import javax.annotation.Resource;
  * Created by 2020/6/4
  */
 @Component
-public class SysLoginSerivice {
+public class SysLoginService {
     @Resource
     ISysUserService iSysUserService;
     @Resource

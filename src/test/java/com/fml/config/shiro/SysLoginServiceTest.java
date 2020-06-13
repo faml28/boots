@@ -18,9 +18,9 @@ import javax.annotation.Resource;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SysLoginSeriviceTest {
+public class SysLoginServiceTest {
     @Resource
-    SysLoginSerivice userservice;
+    SysLoginService userservice;
 
 
     @Test

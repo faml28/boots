@@ -6,8 +6,9 @@ import com.fml.config.enums.BusinessType;
 import com.fml.config.exception.UserConstants;
 import com.fml.config.page.TableDataInfo;
 import com.fml.config.shiro.SysPasswordService;
+import com.fml.config.util.DateUtils;
+import com.fml.config.util.IpUtils;
 import com.fml.config.util.ShiroUtils;
-import com.fml.controller.BaseController;
 import com.fml.entity.SysUser;
 import com.fml.service.ISysPostService;
 import com.fml.service.ISysRoleService;
@@ -116,10 +117,44 @@ public class SysUserController extends BaseController {
     }
 
     @GetMapping("/edit/{userId}")
-    public String edit(@PathVariable("userId") Long userId,  ModelMap modelMap) {
-        modelMap.put("user",userService.selectUserById(userId));
-        modelMap.put("role", roleService.selectRolesByUserId(userId));
-        modelMap.put("post", postService.selectPostsByUserId(userId));
+    public String edit(@PathVariable("userId") Long userId, ModelMap modelMap) {
+        modelMap.put("user", userService.selectUserById(userId));
+        modelMap.put("roles", roleService.selectRolesByUserId(userId));
+        modelMap.put("posts", postService.selectPostsByUserId(userId));
         return prefix + "/edit";
+    }
+
+    /**
+     * 新增修改保存
+     */
+    @RequiresPermissions("user:edit")
+    @Log(title = "用户管理", businessType = BusinessType.UPDATE)
+    @RequestMapping("/edit")
+    @ResponseBody
+    public AjaxResult editSave(@Validated SysUser user) {
+        userService.checkUserAllowed(user);
+        if (UserConstants.USER_EMAIL_NOT_UNIQUE.equals(userService.checkPhoneUnique(user))) {
+            return error("修改用户信息'" + user.getLoginName() + "'失败，手机号码已经存在");
+        } else if (UserConstants.USER_EMAIL_NOT_UNIQUE.equals(userService.checkEmailUnique(user))) {
+            return error("修改用户信息'" + user.getEmail() + "'失败，邮箱号码已经存在");
+        }
+        user.setUpdateBy(ShiroUtils.getLoginName());
+        user.setLoginIp(IpUtils.getIpAddr(getRequest()));
+        user.setLoginDate(DateUtils.getNowDate());
+        return toAjax(userService.updateUser(user));
+    }
+
+    @RequiresPermissions("user:remove")
+    @Log(title = "用户管理", businessType = BusinessType.DELETE)
+    @RequestMapping("/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids){
+        try {
+            return toAjax(userService.deleteUserByIds(ids));
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return error(exception.getMessage());
+        }
+
     }
 }

@@ -32,7 +32,7 @@
                 </li>
                 <li>
                     <div class="user-panel">
-                        <a class="menuItem" title="个人中心" th:href="@{/system/user/profile}">
+                        <a class="menuItem" title="个人中心" th:href="@{/user/profile}">
                             <div class="hide" th:text="个人中心"></div>
                             <div class="pull-left image">
                                 <img th:src="(${user.avatar} == '') ? @{/img/profile.jpg} : @{${user.avatar}}" class="img-circle" alt="User Image">
@@ -48,7 +48,7 @@
                 <li class="active">
                     <a href="index.html"><i class="fa fa-home"></i> <span class="nav-label">主页</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="active"><a class="menuItem" th:href="@{/system/main}">数据</a></li>
+                        <li class="active"><a class="menuItem" th:href="@{/main}">数据</a></li>
                     </ul>
                 </li>
                 <li th:each="menu : ${menus}">
@@ -181,7 +181,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="mt5">
-                                <a th:href="@{/system/user/profile}" class="menuItem">
+                                <a th:href="@{/user/profile}" class="menuItem">
                                     <i class="fa fa-user"></i> 个人中心</a>
                             </li>
                             <li>
@@ -204,7 +204,7 @@
             </button>
             <nav class="page-tabs menuTabs">
                 <div class="page-tabs-content">
-                    <a href="javascript:;" class="active menuTab" data-id="/system/main">首页</a>
+                    <a href="javascript:;" class="active menuTab" data-id="/main">首页</a>
                 </div>
             </nav>
             <button class="roll-nav roll-right tabRight">
@@ -216,8 +216,8 @@
         <a id="ax_close_max" class="ax_close_max" href="#" title="关闭全屏"> <i class="fa fa-times-circle-o"></i> </a>
 
         <div class="row mainContent" id="content-main">
-            <iframe class="RuoYi_iframe" name="iframe0" width="100%" height="100%" data-id="/system/main"
-                    th:src="@{/system/main}" frameborder="0" seamless></iframe>
+            <iframe class="RuoYi_iframe" name="iframe0" width="100%" height="100%" data-id="/main"
+                    th:src="@{/main}" frameborder="0" seamless></iframe>
         </div>
         <div class="footer">
             <div class="pull-right">© [[${copyrightYear}]] RuoYi Copyright </div>
@@ -263,7 +263,7 @@
 
     /* 用户管理-重置密码 */
     function resetPwd() {
-        var url = ctx + 'system/user/profile/resetPwd';
+        var url = ctx + 'user/profile/resetPwd';
         $.modal.open("重置密码", url, '770', '380');
     }
     /* 切换主题 */
@@ -273,7 +273,7 @@
             shadeClose : true,
             title : "切换主题",
             area : ["530px", "386px"],
-            content : [ctx + "system/switchSkin", 'no']
+            content : [ctx + "switchSkin", 'no']
         })
     }
 

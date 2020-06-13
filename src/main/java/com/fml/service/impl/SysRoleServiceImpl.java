@@ -7,6 +7,7 @@ import com.fml.service.ISysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Set;
 
@@ -17,12 +18,12 @@ import java.util.Set;
 @Service
 public class SysRoleServiceImpl implements ISysRoleService {
 
-    @Autowired
-    SysRoleMapper sysRoleMapper;
+    @Resource
+    SysRoleMapper roleMapper;
 
     @Override
     public List<SysRole> selectRoleList(SysRole role) {
-        return sysRoleMapper.selectRoleList(role);
+        return roleMapper.selectRoleList(role);
     }
 
     @Override
@@ -32,12 +33,26 @@ public class SysRoleServiceImpl implements ISysRoleService {
 
     @Override
     public List<SysRole> selectRolesByUserId(Long userId) {
-        return null;
+
+        List<SysRole> userRoles = roleMapper.selectRolesByUserId(userId);
+        List<SysRole> roles = selectRoleAll();
+        for (SysRole role : roles)
+        {
+            for (SysRole userRole : userRoles)
+            {
+                if (role.getRoleId().longValue() == userRole.getRoleId().longValue())
+                {
+                    role.setFlag(true);
+                    break;
+                }
+            }
+        }
+        return roles;
     }
 
     @Override
     public List<SysRole> selectRoleAll() {
-        return sysRoleMapper.selectRoleList(new SysRole());
+        return roleMapper.selectRoleList(new SysRole());
     }
 
     @Override
