@@ -11,7 +11,7 @@ import java.util.List;
  * Created by 2020/6/4
 
 */
-@Service
+
 public interface ISysUserService
 {
     /**

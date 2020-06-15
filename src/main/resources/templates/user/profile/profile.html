@@ -142,7 +142,7 @@
     <script>
 	    /*用户管理-头像*/
 	    function avatar() {
-	        var url = ctx + 'system/user/profile/avatar';
+	        var url = ctx + 'user/avatar';
 	        $.modal.open("修改头像", url);
 	    }
 	    
@@ -157,7 +157,7 @@
 					required:true,
 		            email:true,
 		            remote: {
-		                url: ctx + "system/user/checkEmailUnique",
+		                url: ctx + "user/checkEmailUnique",
 		                type: "post",
 		                dataType: "json",
 		                data: {
@@ -177,7 +177,7 @@
 					required:true,
 					isPhone:true,
 		            remote: {
-		                url: ctx + "system/user/checkPhoneUnique",
+		                url: ctx + "user/checkPhoneUnique",
 		                type: "post",
 		                dataType: "json",
 		                data: {
@@ -212,7 +212,7 @@
 		
 		function submitUserInfo() {
 	        if ($.validate.form()) {
-	        	$.operate.saveModal(ctx + "system/user/profile/update", $('#form-user-edit').serialize());
+	        	$.operate.saveModal(ctx + "user/update", $('#form-user-edit').serialize());
 	        }
 	    }
 	    
@@ -223,7 +223,7 @@
 				oldPassword:{
 					required:true,
 					remote: {
-	                    url: ctx + "system/user/profile/checkPassword",
+	                    url: ctx + "user/checkPassword",
 	                    type: "get",
 	                    dataType: "json",
 	                    data: {
@@ -264,7 +264,7 @@
 		
 		function submitChangPassword () {
 	        if ($.validate.form("form-user-resetPwd")) {
-	        	$.operate.saveModal(ctx + "system/user/profile/resetPwd", $('#form-user-resetPwd').serialize());
+	        	$.operate.saveModal(ctx + "user/resetPwd", $('#form-user-resetPwd').serialize());
 	        }
 	    }
 	</script>
